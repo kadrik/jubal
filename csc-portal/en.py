@@ -2,8 +2,10 @@ from pyechonest import song
 import py7D
 import json
 import os
-os.environ['ECHO_NEST_API_KEY'] = 'T3XI5Z9ADDMUM7372'
+from pyechonest import config
 
+config.ECHO_NEST_API_KEY="T3XI5Z9ADDMUM7372"
+    
 def getSongInfo(s,case):
     res7D = []
     resEN = []
@@ -30,10 +32,9 @@ def getSongInfo(s,case):
             title = resEN[i].title
             artist_name = resEN[i].artist_name
             print artist_name + ' - ' + title
+        return resEN
     else:
-        print 'song not found'
-        
-    return resEN, res7D
+        raise NameError('song not found')
     
 if __name__ == "__main__":
     getSongInfo("so what",1)
